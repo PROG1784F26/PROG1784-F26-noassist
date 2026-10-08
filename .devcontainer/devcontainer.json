@@ -1,15 +1,27 @@
 {
-  "name": "PROG1784-F26 Python + Ollama",
-  "dockerComposeFile": ["compose.yaml", "compose.runtime.yaml"],
+  "name": "PROG1784-F26-noassist Python + Ollama",
+  "dockerComposeFile": [
+    "compose.yaml",
+    "compose.runtime.yaml"
+  ],
   "initializeCommand": [
-    "docker", "run", "--rm", "--user", "0",
-    "--volume", "${localWorkspaceFolder}/.devcontainer:/config:z",
+    "docker",
+    "run",
+    "--rm",
+    "--user",
+    "0",
+    "--volume",
+    "${localWorkspaceFolder}/.devcontainer:/config:z",
     "mcr.microsoft.com/devcontainers/python:1-3.13-bookworm",
-    "python", "/config/configure_runtime.py"
+    "python",
+    "/config/configure_runtime.py"
   ],
   "service": "python",
-  "runServices": ["python", "ollama"],
-  "workspaceFolder": "/workspaces/PROG1784-F26",
+  "runServices": [
+    "python",
+    "ollama"
+  ],
+  "workspaceFolder": "/workspaces/PROG1784-F26-noassist",
   "remoteUser": "vscode",
   "userEnvProbe": "none",
   "remoteEnv": {
@@ -31,9 +43,28 @@
         "Continue.continue"
       ],
       "settings": {
-        "remote.extensionKind": {"Continue.continue": ["workspace"]},
+        "remote.extensionKind": {
+          "Continue.continue": [
+            "workspace"
+          ]
+        },
         "python.defaultInterpreterPath": "/home/vscode/.venv/bin/python",
-        "terminal.integrated.defaultProfile.linux": "bash"
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.inlineSuggest.enabled": false,
+        "editor.suggest.preview": false,
+        "github.copilot.enable": {
+          "*": false,
+          "python": false,
+          "markdown": false,
+          "plaintext": false,
+          "scminput": false
+        },
+        "github.copilot.editor.enableAutoCompletions": false,
+        "github.copilot.nextEditSuggestions.enabled": false,
+        "github.copilot.nextEditSuggestions.fixes": false,
+        "github.copilot.renameSuggestions.triggerAutomatically": false,
+        "continue.enableTabAutocomplete": false,
+        "continue.enableNextEdit": false
       }
     }
   }

@@ -1,4 +1,8 @@
-# PROG1784-F26
+# PROG1784-F26-noassist
+
+Based on [PROG1784F26/PROG1784-F26](https://github.com/PROG1784F26/PROG1784-F26),
+with automatic AI ghost-text completion and next-edit suggestions disabled.
+Continue Tutor/Direct chat and requested edits remain available.
 
 Python course workspace with two services: a Python 3.13 development container
 and an Ollama container. VS Code installs Python, Pylance, the debugger, Ruff,
@@ -10,7 +14,7 @@ the terminal, debugger, and editor use that environment.
 Follow steps 1–8 for your first setup. Commands marked **Host terminal** run on
 your computer before entering the container. Commands marked **Container terminal**
 run in VS Code after reopening the project in its devcontainer. Start terminal
-commands from the `PROG1784-F26` repository folder unless a step says otherwise.
+commands from the `PROG1784-F26-noassist` repository folder unless a step says otherwise.
 
 [Setup](#setup-walkthrough) · [Tutor and Direct](#learning-with-continue) ·
 [Speed](#expected-speed) · [Daily use](#starting-and-ending-a-work-session) ·
@@ -25,7 +29,7 @@ downloads. Once everything is installed, local Python development and model
 inference do not need a cloud AI account or API key. Fetching new packages or
 working with a remote Git repository still requires network access.
 
-Allow roughly **17 GB for model downloads**, plus images and working files:
+Allow roughly **16 GB for model downloads**, plus images and working files:
 budget **at least 35 GB free disk**. Start with **16 GB RAM or more**; when using
 a container VM, allocate **12 GB or more** for the 8B model if your computer has
 sufficient memory. Leave memory for your host OS and VS Code. These are practical
@@ -142,7 +146,7 @@ to confirm it runs in the remote/container extension host.
 Install [Git](https://git-scm.com/downloads) in the environment where you will
 clone; for the WSL workflow, Git must also be available inside that WSL distribution.
 
-The course repository is [PROG1784F26/PROG1784-F26](https://github.com/PROG1784F26/PROG1784-F26).
+The course repository is [PROG1784F26/PROG1784-F26-noassist](https://github.com/PROG1784F26/PROG1784-F26-noassist).
 Run the clone command from the directory where you keep your course folders.
 If your instructor assigns a personal fork or a different repository, substitute
 that repository URL.
@@ -151,17 +155,17 @@ that repository URL.
 
 ```text
 git --version
-git clone https://github.com/PROG1784F26/PROG1784-F26.git PROG1784-F26
-cd PROG1784-F26
+git clone https://github.com/PROG1784F26/PROG1784-F26-noassist.git PROG1784-F26-noassist
+cd PROG1784-F26-noassist
 code .
 ```
 
 If you already have this checkout, open it rather than cloning again. If `code`
 is not on your PATH, use **File: Open Folder** in VS Code and select
-`PROG1784-F26`. Open the repository root containing `.devcontainer`, `.continue`,
+`PROG1784-F26-noassist`. Open the repository root containing `.devcontainer`, `.continue`,
 and `examples`, not just its parent or `examples` folder.
 
-Keep the visible course folder named **PROG1784-F26**. Internal container/project
+Keep the visible course folder named **PROG1784-F26-noassist**. Internal container/project
 names use lowercase for engine compatibility; there is nothing to rename there.
 No host Python, host Ollama, or host Node.js installation is required for this setup.
 
@@ -186,8 +190,8 @@ it depends on your connection and disk speed. Watch the lifecycle terminal or
 all models finish downloading. Do not send an AI request until its model is ready.
 
 When connected, VS Code's lower-left remote indicator should identify the
-**PROG1784-F26 Python + Ollama** devcontainer. The project is mounted at
-`/workspaces/PROG1784-F26` inside it. That is a container path, not a host folder
+**PROG1784-F26-noassist Python + Ollama** devcontainer. The project is mounted at
+`/workspaces/PROG1784-F26-noassist` inside it. That is a container path, not a host folder
 you need to create. Edits in the project are saved to your host checkout.
 
 ### 5. Check Python and the model downloads
@@ -247,7 +251,7 @@ availability is checked separately by the command above.
 
 ### 6. Try Continue as a tutor
 
-Open Continue from the VS Code sidebar. Select the local **PROG1784-F26 Local
+Open Continue from the VS Code sidebar. Select the local **PROG1784-F26-noassist Local
 Python** configuration if prompted, then select **Tutor - Gemma 4 E4B (default)**
 in its model picker. Make sure Continue is installed in the devcontainer, not
 only on your host; the course config requests this automatically.
@@ -357,7 +361,7 @@ switching models may unload it. Startup does not preload models automatically.
 ## Starting and ending a work session
 
 1. Start your container engine or Podman machine.
-2. Open `PROG1784-F26` in VS Code and reopen it in the devcontainer if necessary.
+2. Open `PROG1784-F26-noassist` in VS Code and reopen it in the devcontainer if necessary.
 3. Optionally warm up Gemma. Select Tutor or Direct for the help you want.
 4. Write and run Python in the container terminal. Review AI changes and test
    your code. Use Git to save the work you want to keep.
@@ -421,18 +425,25 @@ After seeing an example or solution, trying a small variation without AI is a
 useful way to check your understanding. These activities are optional, not gates
 to receiving help. Run tests and question unexpected advice: the AI can be wrong.
 
-Inline AI completion is disabled because tutor rules do not apply to autocomplete.
-Its downloaded model remains available. To deliberately enable it, set
-`continue.enableTabAutocomplete` to `true` in `.vscode/settings.json`; set it back
-to `false` to return to the course default. This affects Continue's suggestions,
-not Pylance's normal Python completions or another extension's AI suggestions.
+Automatic AI ghost-text completion and next-edit suggestions are disabled in
+both `.vscode/settings.json` and the devcontainer's VS Code settings. VS Code
+inline suggestions and completion previews, Copilot automatic completions,
+next-edit suggestions and automatic rename suggestions, and Continue tab
+autocomplete and next-edit suggestions are turned off. The Continue config has
+no autocomplete model, so setup does not download one. Pylance's normal Python
+completion menu, formatting, and on-demand Continue Tutor/Direct help remain
+available.
+
+These are repository defaults for VS Code, not a restriction on students'
+settings. Language-specific user settings or another editor's extensions can
+require separate configuration. See the official
+[VS Code AI settings reference](https://code.visualstudio.com/docs/agents/reference/ai-settings).
 
 The policy and three teaching examples live in `.devcontainer/tutor_policy.yaml`. A local adapter in the
 Python container adds the selected policy to Chat/Agent requests and translates
 legacy completion/Edit requests through the same policy. No third service or
 host port is needed. `.continue/config.yaml` defines the visible choices. Apply
-uses a separate model entry to apply an already proposed diff; autocomplete also
-bypasses tutoring. Review diffs, including changes proposed by tools.
+uses a separate model entry to apply an already proposed diff. Review diffs, including changes proposed by tools.
 
 Gemma replies are checked before they appear. A reply may take longer to begin
 because the adapter buffers it and can make **one targeted repair** for a detected
@@ -445,7 +456,7 @@ tool calls. Retry the request or make it smaller; this never switches you to Dir
 
 Each incoming Gemma request has a **270-second total limit**, inside Continue's
 300-second timeout. A tool follow-up is a new request with its own limit. Cancelling
-closes the upstream request. Qwen, Apply, and autocomplete keep their existing
+closes the upstream request. Qwen and Apply keep their existing
 paths; the Gemma response checks do not apply to them.
 
 Gemma stays loaded for **15 minutes after use**, subject to Ollama unloading it
@@ -476,19 +487,16 @@ Verified against the Ollama catalog on 2026-09-08:
 | [`gemma4:e4b-it-qat`](https://ollama.com/library/gemma4:e4b-it-qat) | Default Tutor and optional Direct; 8B total / about 4.5B effective | 6.1 GB |
 | [`qwen3.5:4b`](https://ollama.com/library/qwen3.5:4b) | Direct chat/edits and Apply; latest Qwen family with a 4B tag | 3.4 GB |
 | [`qwen3-vl:8b-instruct`](https://ollama.com/library/qwen3-vl:8b-instruct) | Newest exact 8B Qwen option found in the catalog | 6.1 GB |
-| [`qwen2.5-coder:1.5b`](https://ollama.com/library/qwen2.5-coder:1.5b) | Inline code completion | 986 MB |
 
 Qwen 3.5 has a 9B model, **no 8B tag**. The 8B choice therefore uses Qwen3-VL.
 For text-only Qwen3 instead, change the Qwen 8B entry to `qwen3:8b` and remove
 `image_input` from its capabilities. For the newer, slightly larger family,
 use `qwen3.5:9b` and update its display name.
 
-The extra 1.5B model supports fill-in-the-middle code completion, as recommended
-by [Continue's autocomplete documentation](https://docs.continue.dev/customize/model-roles/autocomplete).
 All chat models explicitly use **16,384 context tokens**, with up to **2,048
 output tokens** within that window. Ollama's server default matches. This leaves
 more room for course instructions, code, and conversation than the previous
-4,096-token setting. Autocomplete keeps its separate 2,048-token context.
+4,096-token setting.
 Qwen uses temperature 0.2. Gemma uses its documented temperature 1.0, top-p 0.95
 and top-k 64. The adapter supplies a zero presence penalty because the inspected
 Continue Ollama provider does not forward that YAML option.
@@ -526,7 +534,7 @@ used by Continue. An existing different config is backed up before replacement.
 Continue runs in the remote extension host. Chat and Edit use
 `http://127.0.0.1:11435/tutor/` or `/direct/` inside the Python container; keep the
 trailing slash. The adapter and model provisioning use `OLLAMA_HOST`, normally
-`http://ollama:11434` on the Compose network. Apply/autocomplete connect directly
+`http://ollama:11434` on the Compose network. Apply connects directly
 to Ollama. Neither service publishes a host port.
 
 After editing the config, run these commands **inside the development container**:
@@ -602,10 +610,10 @@ For manual startup, run the probe from the repository directory first, then use
 both Compose files (the mount uses an absolute path; substitute your checkout):
 
 ```bash
-docker run --rm --user 0 --volume "/absolute/path/PROG1784-F26/.devcontainer:/config:z" mcr.microsoft.com/devcontainers/python:1-3.13-bookworm python /config/configure_runtime.py
+docker run --rm --user 0 --volume "/absolute/path/PROG1784-F26-noassist/.devcontainer:/config:z" mcr.microsoft.com/devcontainers/python:1-3.13-bookworm python /config/configure_runtime.py
 docker compose -f .devcontainer/compose.yaml -f .devcontainer/compose.runtime.yaml up -d --build
-docker compose -f .devcontainer/compose.yaml exec --user vscode --workdir /workspaces/PROG1784-F26 python python .devcontainer/setup.py config
-docker compose -f .devcontainer/compose.yaml exec --user vscode --workdir /workspaces/PROG1784-F26 python python .devcontainer/setup.py pull
+docker compose -f .devcontainer/compose.yaml exec --user vscode --workdir /workspaces/PROG1784-F26-noassist python python .devcontainer/setup.py config
+docker compose -f .devcontainer/compose.yaml exec --user vscode --workdir /workspaces/PROG1784-F26-noassist python python .devcontainer/setup.py pull
 ```
 
 VS Code supplies the correctly quoted host path automatically, including paths
@@ -624,7 +632,7 @@ The default is CPU inference and does not require a GPU.
 | Windows 10/11 x86-64 with WSL2 support | Docker Desktop or Podman Desktop + Docker CLI compatibility; Linux containers | CPU |
 
 On Windows, enable Docker Desktop's WSL integration. For best filesystem
-performance, clone into your WSL Linux home (for example `~/courses/PROG1784-F26`),
+performance, clone into your WSL Linux home (for example `~/courses/PROG1784-F26-noassist`),
 then open it using VS Code's WSL extension and reopen in the devcontainer. A
 Windows-hosted checkout also works when Docker Desktop can share that folder.
 On Mac, allow the container VM access to the checkout if prompted. For Podman,
@@ -680,8 +688,10 @@ If the log shows `getxattr ... no such file or directory` for a previous checkou
 location, the existing Python container still has that old host folder mounted.
 A normal reopen can reuse it with `--no-recreate`; building the image alone does
 not update an existing container's mount. This can also happen when switching
-between clones because the default Compose project name is `prog1784f26`.
-Use one active course checkout per engine with this default configuration.
+between clones that share a Compose project name. This variant uses
+`prog1784f26-noassist`, separate from the original repository's `prog1784f26`.
+Use one active checkout of each variant per engine. Both variants reuse the
+`prog1784-f26_ollama-models` volume so existing models remain available.
 
 Close the failed devcontainer window. In a **host terminal**, change to the
 current repository folder and remove the old course containers:
@@ -768,7 +778,7 @@ A separate fresh copy of the final files in a path containing spaces also passed
 check, including the adapter routes. Continue's official config parser (`@continuedev/config-yaml` 1.42.0)
 accepts the configuration, and CI now runs that schema check. Download tests
 include truncated HTTP responses and connection resets. Chat request timeouts
-are 300 seconds; autocomplete's separate timeout is 60000 milliseconds.
+are 300 seconds; no autocomplete model is configured in this variant.
 
 Platform support is based on native multi-architecture images and portable
 configuration. The automated host tests do not replace an end-to-end VS Code

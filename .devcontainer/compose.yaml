@@ -1,15 +1,15 @@
-name: prog1784f26
+name: prog1784f26-noassist
 
 services:
   python:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
-    command: ["/home/vscode/.venv/bin/python", "/workspaces/PROG1784-F26/.devcontainer/tutor_gateway.py"]
+    command: ["/home/vscode/.venv/bin/python", "/workspaces/PROG1784-F26-noassist/.devcontainer/tutor_gateway.py"]
     user: vscode
     init: true
     volumes:
-      - ..:/workspaces/PROG1784-F26:z
+      - ..:/workspaces/PROG1784-F26-noassist:z
     environment:
       OLLAMA_HOST: http://ollama:11434
       PYTHONUNBUFFERED: "1"

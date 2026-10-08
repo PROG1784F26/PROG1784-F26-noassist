@@ -6,15 +6,37 @@
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.tabSize": 4,
-  "editor.rulers": [88],
-  "editor.inlineSuggest.enabled": true,
+  "editor.rulers": [
+    88
+  ],
+  "editor.inlineSuggest.enabled": false,
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "continue.enableTabAutocomplete": false,
   "continue.enableNextEdit": false,
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
-    "editor.codeActionsOnSave": {"source.organizeImports.ruff": "explicit"}
+    "editor.codeActionsOnSave": {
+      "source.organizeImports.ruff": "explicit"
+    },
+    "editor.inlineSuggest.enabled": false,
+    "editor.suggest.preview": false
   },
-  "files.exclude": {"**/__pycache__": true, "**/.pytest_cache": true, "**/.ruff_cache": true}
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/.ruff_cache": true
+  },
+  "editor.suggest.preview": false,
+  "github.copilot.enable": {
+    "*": false,
+    "python": false,
+    "markdown": false,
+    "plaintext": false,
+    "scminput": false
+  },
+  "github.copilot.editor.enableAutoCompletions": false,
+  "github.copilot.nextEditSuggestions.enabled": false,
+  "github.copilot.nextEditSuggestions.fixes": false,
+  "github.copilot.renameSuggestions.triggerAutomatically": false
 }

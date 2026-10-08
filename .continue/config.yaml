@@ -1,4 +1,4 @@
-name: PROG1784-F26 Local Python
+name: PROG1784-F26-noassist Local Python
 version: 1.0.0
 schema: v1
 models:
@@ -97,22 +97,6 @@ models:
     keepAlive: 300
   requestOptions:
     timeout: 300
-- name: Qwen 2.5 Coder 1.5B (autocomplete)
-  provider: ollama
-  model: qwen2.5-coder:1.5b
-  apiBase: http://ollama:11434
-  roles:
-  - autocomplete
-  defaultCompletionOptions:
-    contextLength: 2048
-    maxTokens: 128
-    temperature: 0.2
-    keepAlive: 300
-  autocompleteOptions:
-    debounceDelay: 750
-    modelTimeout: 60000
-    maxPromptTokens: 1024
-    onlyMyCode: true
 rules:
 - Follow the assistance mode supplied by the local course adapter. Explain meaningful changes and
   distinguish proposed edits from successful tool results.

@@ -28,7 +28,9 @@ def install_config():
         shutil.copy2(destination, backup)
         print(f"Previous config saved to {backup}", flush=True)
     shutil.copy2(CONFIG, destination)
-    print(f"Installed {destination}. Select PROG1784-F26 Local Python in Continue.")
+    print(
+        f"Installed {destination}. Select PROG1784-F26-noassist Local Python in Continue."
+    )
 
 
 def models():
