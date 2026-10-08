@@ -1,5 +1,5 @@
 {
-  "name": "PROG1784-F26-noassist Python + Ollama",
+  "name": "PROG1784-F26-noassist Python",
   "dockerComposeFile": [
     "compose.yaml",
     "compose.runtime.yaml"
@@ -18,8 +18,7 @@
   ],
   "service": "python",
   "runServices": [
-    "python",
-    "ollama"
+    "python"
   ],
   "workspaceFolder": "/workspaces/PROG1784-F26-noassist",
   "remoteUser": "vscode",
@@ -30,24 +29,15 @@
   },
   "shutdownAction": "stopCompose",
   "overrideCommand": false,
-  "postCreateCommand": "/home/vscode/.venv/bin/python .devcontainer/setup.py config",
-  "waitFor": "postCreateCommand",
-  "postStartCommand": "/home/vscode/.venv/bin/python .devcontainer/setup.py pull",
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-python.debugpy",
-        "charliermarsh.ruff",
-        "Continue.continue"
+        "charliermarsh.ruff"
       ],
       "settings": {
-        "remote.extensionKind": {
-          "Continue.continue": [
-            "workspace"
-          ]
-        },
         "python.defaultInterpreterPath": "/home/vscode/.venv/bin/python",
         "terminal.integrated.defaultProfile.linux": "bash",
         "editor.inlineSuggest.enabled": false,
@@ -63,8 +53,7 @@
         "github.copilot.nextEditSuggestions.enabled": false,
         "github.copilot.nextEditSuggestions.fixes": false,
         "github.copilot.renameSuggestions.triggerAutomatically": false,
-        "continue.enableTabAutocomplete": false,
-        "continue.enableNextEdit": false
+        "chat.disableAIFeatures": true
       }
     }
   }

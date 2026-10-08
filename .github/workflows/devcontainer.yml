@@ -26,17 +26,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install --global @devcontainers/cli @continuedev/config-yaml@1.42.0
-      - name: Validate Continue with its official schema
-        run: config-yaml .continue/config.yaml
-      - name: Run the actual devcontainer lifecycle through postCreateCommand
+      - run: npm install --global @devcontainers/cli
+      - name: Start the Python devcontainer
         run: devcontainer up --workspace-folder . --skip-non-blocking-commands
-      - name: Validate optional GPU overlays without requiring GPU hardware
-        run: |
-          for overlay in nvidia nvidia-cdi rocm vulkan podman-groups gpu-selinux; do
-            docker compose -f .devcontainer/compose.yaml -f .devcontainer/compose.runtime.yaml -f ".devcontainer/compose.$overlay.yaml" config --quiet
-          done
-      - name: Check Python environment and Ollama network
+      - name: Check Python environment and workspace permissions
         run: |
           devcontainer exec --workspace-folder . python .devcontainer/smoke.py
           devcontainer exec --workspace-folder . python examples/hello.py

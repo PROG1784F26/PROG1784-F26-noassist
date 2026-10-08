@@ -1,5 +1,0 @@
-# Optional NVIDIA via Podman CDI; requires host NVIDIA Container Toolkit setup.
-services:
-  ollama:
-    devices:
-      - nvidia.com/gpu=all

@@ -12,4 +12,3 @@ htmlcov/
 .DS_Store
 Thumbs.db
 .devcontainer/compose.runtime.yaml
-.devcontainer/tutor-results*.json

@@ -4,7 +4,11 @@
     "ms-python.python",
     "ms-python.vscode-pylance",
     "ms-python.debugpy",
-    "charliermarsh.ruff",
-    "Continue.continue"
+    "charliermarsh.ruff"
+  ],
+  "unwantedRecommendations": [
+    "Continue.continue",
+    "GitHub.copilot",
+    "GitHub.copilot-chat"
   ]
 }

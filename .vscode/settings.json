@@ -12,8 +12,6 @@
   "editor.inlineSuggest.enabled": false,
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
-  "continue.enableTabAutocomplete": false,
-  "continue.enableNextEdit": false,
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.codeActionsOnSave": {
@@ -38,5 +36,6 @@
   "github.copilot.editor.enableAutoCompletions": false,
   "github.copilot.nextEditSuggestions.enabled": false,
   "github.copilot.nextEditSuggestions.fixes": false,
-  "github.copilot.renameSuggestions.triggerAutomatically": false
+  "github.copilot.renameSuggestions.triggerAutomatically": false,
+  "chat.disableAIFeatures": true
 }

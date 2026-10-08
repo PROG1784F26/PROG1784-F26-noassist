@@ -40,45 +40,6 @@
         "."
       ],
       "problemMatcher": []
-    },
-    {
-      "label": "Continue: Apply course config",
-      "type": "process",
-      "command": "python",
-      "args": [
-        ".devcontainer/setup.py",
-        "config"
-      ],
-      "problemMatcher": []
-    },
-    {
-      "label": "Ollama: Download missing models",
-      "type": "process",
-      "command": "python",
-      "args": [
-        ".devcontainer/setup.py",
-        "pull"
-      ],
-      "problemMatcher": []
-    },
-    {
-      "label": "Ollama: Check models",
-      "type": "process",
-      "command": "python",
-      "args": [
-        ".devcontainer/setup.py",
-        "check"
-      ],
-      "problemMatcher": []
-    },
-    {
-      "label": "Ollama: Warm up Gemma tutor",
-      "type": "process",
-      "command": "python",
-      "args": [
-        ".devcontainer/warm_tutor.py"
-      ],
-      "problemMatcher": []
     }
   ]
 }
